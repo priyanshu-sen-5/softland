@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <main id="main">
+
+    <section class="hero-section inner-page">
+    
+
+      </div>
+
+    
+
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="row mb-5 align-items-end">
+          <div class="col-md-6" data-aos="fade-up">
+
+            <h2>Contact Form</h2>
+            
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 ms-auto order-2" data-aos="fade-up">
+            <ul class="list-unstyled">
+              <li class="mb-3">
+                <strong class="d-block mb-1">Address</strong>
+                <span>203 Fake St. Mountain View, San Francisco, California, USA</span>
+              </li>
+              <li class="mb-3">
+                <strong class="d-block mb-1">Phone</strong>
+                <span>+1 232 3235 324</span>
+              </li>
+              <li class="mb-3">
+                <strong class="d-block mb-1">Email</strong>
+                <span>youremail@domain.com</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-6 mb-5 mb-md-0" data-aos="fade-up">
+
+            {% if error %}
+            <div class = "alert alert-danger" role = "alert">
+            {{ msg }}
+            </div>
+            {% endif %}
+            <form method = "POST" action="{% url 'submitform' %}">
+              {% csrf_token %}
+
+            <div>
+                                <label>Value1</label>
+                                <input type="text" name="value1" id="value1" value = "0" >
+            </div>
+
+            <div>
+                                <label>Value2</label>
+                                <input type="text" name="value2" id="value2" >
+            </div>
+
+            <div>
+                                <label>operator</label>
+                                
+                                <select name = "op">
+                                  <option value = "+">+</option>
+                                  <option value = "-">-</option>
+                                  <option value = "*">*</option>
+                                  <option value = "/">/</option>
+
+                                </select>
+            </div>
+
+
+            <div>
+                <label>Output</label>
+                <input type="text" value= "{{ result }}" >
+            </div>
+
+            <div class = "pt-4">
+                                <button input type="submit"> Save
+                                </button>
+
+            </div>
+            </form>
+      </div>
+    </section>
+
+
+
+  </main><!-- End #main -->
+
+  {% endblock  %}
+
+
+
